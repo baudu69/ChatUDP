@@ -1,10 +1,9 @@
-package vue;
+package vue.Client;
 
 import Donnes.Client.Emission;
 import Donnes.Client.Reception;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -73,9 +72,9 @@ public class Chat implements Observer {
         s = new Emission(socket, host);
         rt = new Thread(r);
         st = new Thread(s);
-        rt.start(); st.start();
+        rt.start();
+        st.start();
     }
-
 
 
     public static void main(String[] args) {

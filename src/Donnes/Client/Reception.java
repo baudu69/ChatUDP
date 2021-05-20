@@ -1,11 +1,10 @@
 package Donnes.Client;
 
-import vue.Chat;
+import vue.Client.Chat;
 
 import java.net.*;
 import java.util.Arrays;
 import java.util.Observable;
-import java.util.Observer;
 
 
 public class Reception extends Observable implements Runnable {
