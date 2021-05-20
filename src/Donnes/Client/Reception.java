@@ -1,16 +1,25 @@
 package Donnes.Client;
 
+import vue.Chat;
+
 import java.net.*;
 import java.util.Arrays;
+import java.util.Observable;
+import java.util.Observer;
 
 
-class Reception implements Runnable {
+public class Reception extends Observable implements Runnable {
     private final DatagramSocket socket;
     private final byte[] buffer;
 
     /**
      * @param socket socket de connexion
      */
+    public Reception(DatagramSocket socket, Chat unChat) {
+        this.socket = socket;
+        buffer = new byte[1024];
+        addObserver(unChat);
+    }
     public Reception(DatagramSocket socket) {
         this.socket = socket;
         buffer = new byte[1024];
@@ -26,6 +35,8 @@ class Reception implements Runnable {
                 byte[] data = packet.getData();
                 message = new String(data).split("\0")[0];
                 System.out.println(message);
+                setChanged();
+                notifyObservers(message);
             } catch(Exception e) {
                 System.err.println(e);
             }

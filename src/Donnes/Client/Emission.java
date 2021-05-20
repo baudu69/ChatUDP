@@ -3,7 +3,7 @@ package Donnes.Client;
 import java.net.*;
 import java.util.Scanner;
 
-class Emission implements Runnable {
+public class Emission implements Runnable {
     public final static int PORT = 7331;
     private final DatagramSocket sock;
     private final String ip;
